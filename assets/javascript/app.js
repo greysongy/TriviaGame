@@ -3,7 +3,7 @@ var time;
 var page1 = {
     question: "Worst-case runtime of finding an element in a non balanced binary search tree",
     answers: ["O(log(n))", "O(n(log(n))", "O(n)", "O(n^2)"],
-    correctAnswer: [1]
+    correctAnswer: "O(n)"
 }
 
 var page2 = {
@@ -66,8 +66,18 @@ var currentAnswer;
 var displayResultIsFinished = false;
 var answerCanBeClicked = false;
 var intervalId;
+// maybe do numQuestions, and that can be a conditional in some checking
+var numQuestions = 0;
+//could do another boolean to represent gameOver
+var gameOver = false;
 
 console.log(pages);
+
+//create a final display function 
+
+function displayFinalPage() {
+    gameOver = true;
+}
 
 function decrement() {
     if (time > 0) {
@@ -88,15 +98,21 @@ function startCountdown() {
 function startGame() {
     updatePage();
     $("#upperRow").remove();
-    $("#answers").show();
+    // $("#answers").show();
     answerCanBeClicked = true;
     // $("#questionWrapper").removeClass("animated lightSpeedIn");
 }
 
 function switchPage() {
-    pages.shift();
-    updatePage();
-    answerCanBeClicked = true;
+    if (numQuestions === 10) {
+        console.log("We would switch");
+        displayFinalPage();
+    }
+    else {
+        pages.shift();
+        updatePage();
+        answerCanBeClicked = true;
+    }
 }
 
 function updatePage() {
@@ -106,23 +122,39 @@ function updatePage() {
 }
 
 function setPageInfo() {
-    // $("#questionWrapper").removeClass("animated lightSpeedIn");
-    // $("#questionWrapper").addClass("animated lightSpeedIn");
+    $("#questionWrapper").removeClass("animated lightSpeedIn");
+    $("#question").hide();
+    $("#timerWrapper").removeClass("animated lightSpeedIn");
+    $("#timer").hide();
+    $("#answersWrapper").removeClass("animated lightSpeedIn");
+    $("#answers").hide();
+    setTimeout(function(){
+        $("#question").show();
+        $("#questionWrapper").addClass("animated lightSpeedIn");
+        $("#timer").show();
+        $("#timerWrapper").addClass("animated lightSpeedIn");
+        $("#answers").show();
+        $("#answersWrapper").addClass("animated lightSpeedIn");
+
+    }, 1000)
     // $("#questionWrapper").hide();
     // $("#questionWrapper").show();
     //figure out how to make the animation continuous
+
     $("#question").text(currentPage.question);
-    console.log("Current Question:" + currentPage.question);
+
     for (var i = 1; i < 5; i++) {
         $("#" + i).text(currentPage.answers[i - 1]);
     }
     $("#result").text("Result");
     currentAnswer = currentPage.correctAnswer;
+    numQuestions++;
+
 }
 
 function displayResult(str) {
-    
-    setTimeout(switchPage, 5000);
+
+    setTimeout(switchPage, 2000);
     if (str === null) {
         str = "Timeout";
     }
