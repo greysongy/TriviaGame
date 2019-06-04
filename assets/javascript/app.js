@@ -1,4 +1,4 @@
-//page objects that store crtical information 
+//page objects that store critical information 
 var time;
 var page1 = {
     question: "Worst-case runtime of finding an element in a non balanced binary search tree",
