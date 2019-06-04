@@ -1,26 +1,12 @@
-.container {
-    /* background-color: green */
-}
-
 body {
-     /* background-color: green; */
-    /* background: url("../images/bigOTester.png");
-    background-size: cover;
-    background-repeat: no-repeat; */
-    /* background-color: green; */
     height: 100%;
     background-color: #38A1F3;
-}
-
-#main-container {
-    /* color: #38A1F3; */
-    height: 80vh;
 }
 
 .text {
     font-size: 20px;
 }
 
-/* #navBarText {
-    color: #38A1F3;
-} */
+#result {
+    color: red;
+}

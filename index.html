@@ -14,80 +14,60 @@
 </head>
 
 <body>
-    <!-- Image and text -->
     <nav class="navbar navbar-light bg-light d-flex justify-content-center">
-        <!-- How to change this to twitter blue -->
         <a class="navbar-brand text-primary animated lightSpeedIn" href="#"
             style="font-family: 'Abril Fatface', cursive;">Technical Trivia</a>
     </nav>
-    <div class="container bg-light my-5 text-primary" id="main-container"
+    <div class="container bg-light mt-5 text-primary" id="main-container"
         style="font-family: 'Abril Fatface', cursive;">
         <div class="row">
-            <!-- <div class="col-lg-2"></div> -->
-            <!-- <div class="container h-100 d-flex justify-content-center" id = "main-container" style = "background-color: green"> -->
-            <!-- Figure out why I can't get the whole background green, it may have to do with a misunderstanding of containers -->
             <div class="col-lg-4">
-                <div class="row mt-5" id = "upperRow">
+                <div class="row mt-5" id="upperRow">
                     <div class="col d-flex animated lightSpeedIn">
                         <button type="button" class="btn btn-danger animated pulse infinite" id="start">Start</button>
                     </div>
                 </div>
-                <div id = "lowerRows">
-                <div class="row mt-5">
-                    <div class="col d-flex animated lightSpeedIn" id = "timerWrapper">
-                        <h1 class="text-danger" id="timer">:30</h1>
+                <div id="lowerRows">
+                    <div class="row mt-5">
+                        <div class="col d-flex animated lightSpeedIn" id="timerWrapper">
+                            <h1 class="text-danger" id="timer">:30</h1>
+                        </div>
+                    </div>
+                    <div class="row mt-5">
+                        <div class="col d-flex animated lightSpeedIn" id="questionWrapper">
+                            <h1 class="text" id="question">Question</h1>
+                        </div>
+                    </div>
+                    <div class="row mt-5">
+                        <div class="col d-flex animated lightSpeedIn" id="answersWrapper">
+                            <ul class="list-group" id="answers">
+                                <li class="list-group-item input-answer" id="1"></li>
+                                <li class="list-group-item input-answer" id="2"></li>
+                                <li class="list-group-item input-answer" id="3"></li>
+                                <li class="list-group-item input-answer" id="4"></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row mt-5">
+                        <div class="col d-flex animated lightSpeedIn">
+                            <h1 class="text" id="result"></h1>
+                        </div>
                     </div>
                 </div>
-                <div class="row mt-5">
-                    <div class="col d-flex animated lightSpeedIn" id="questionWrapper">
-                        <h1 class = "text" id="question">Question</h1>
-                    </div>
-                </div>
-                <div class="row mt-5">
-                    <div class="col d-flex animated lightSpeedIn" id = "answersWrapper">
-                        <ul class="list-group"  id="answers">
-                            <li class="list-group-item input-answer" id="1"></li>
-                            <li class="list-group-item input-answer" id="2"></li>
-                            <li class="list-group-item input-answer" id="3"></li>
-                            <li class="list-group-item input-answer" id="4"></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="row mt-5">
-                    <div class="col d-flex animated lightSpeedIn">
-                        <h1 class = "text" id="result"></h1>
-                    </div>
-                </div>
+            </div>
+            <div class="col-lg-6 mt-5 " id="visual">
+                <div class="row">
+                    <iframe width="450" height="300" src="https://www.youtube.com/embed/Dv7gLpW91DM" frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
                 </div>
 
-                <!-- </div> -->
-                <!-- <div class="col-lg-2"></div> -->
-            </div>
-            <div class= "col-lg-6 mt-5 " id = "visual">
-                <iframe width="450" height="300" src="https://www.youtube.com/embed/Dv7gLpW91DM" frameborder="0"
-                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-            </div>
-            <!-- <div class = "col-lg-6">
 
-            </div> -->
-        </div>
-        <!-- <div class = "container">
-        <div class = "row">
-            <div class = "col">
-                <h1>Test 1</h1>
             </div>
         </div>
-        <div class = "row">
-            <div class = "col">
-                <h1>Test 2</h1>
-            </div>
-        </div> -->
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script> -->
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>

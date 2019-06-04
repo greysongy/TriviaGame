@@ -1,4 +1,4 @@
-// how to do O N^2
+//page objects that store crtical information 
 var time;
 var page1 = {
     question: "Worst-case runtime of finding an element in a non balanced binary search tree",
@@ -35,58 +35,18 @@ var page5 = {
     image: "assets/images/pq2.png"
 }
 
-// var page6 = {
-//     question: "placeholder6",
-//     answers: ["1", "2", "3", "4"],
-//     correctAnswer: ["1"], 
-//     image: "none"
-// }
-
-// var page7 = {
-//     question: "placeholder7",
-//     answers: ["1", "2", "3", "4"],
-//     correctAnswer: ["1"], 
-//     image: "none"
-// }
-
-// var page8 = {
-//     question: "placeholder8",
-//     answers: ["1", "2", "3", "4"],
-//     correctAnswer: ["1"], 
-//     image: "none"
-// }
-
-// var page9 = {
-//     question: "placeholder9",
-//     answers: ["1", "2", "3", "4"],
-//     correctAnswer: ["1"], 
-//     image: "none"
-// }
-
-// var page10 = {
-//     question: "placeholder10",
-//     answers: ["1", "2", "3", "4"],
-//     correctAnswer: ["1"], 
-//     image: "none"
-// }
-
+//global variables that are declared and referenced throughout
 var pages = [page1, page2, page3, page4, page5];
 var currentPage;
 var currentAnswer;
 var displayResultIsFinished = false;
 var answerCanBeClicked = false;
 var intervalId;
-// maybe do numQuestions, and that can be a conditional in some checking
 var numQuestions = 0;
-//could do another boolean to represent gameOver
 var gameOver = false;
 var numCorrect = 0;
 
-
-console.log(pages);
-
-//create a final display function 
-
+//function that displays final info once user has answered all questions
 function displayFinalPage() {
     $("#" + (currentPage.answers.indexOf(currentAnswer) + 1)).removeClass("active");
     gameOver = true;
@@ -94,25 +54,30 @@ function displayFinalPage() {
     $("#upperRow").show();
     $("#lowerRows").hide();
     $("#visual").empty();
-    $("#visual").append("<p>" + numCorrect + "/5 correct");
+    $("#visual").append("<h1>" + numCorrect + "/5 correct");
 }
 
+//decrement function that's passed in as a parameter to setInterval and counts down
 function decrement() {
     if (time > 0) {
         time--;
         $("#timer").text(":" + time);
     }
     else {
+        answerCanBeClicked = false;
+        $("#result").text("Out of time");
         clearInterval(intervalId);
         displayResult();
     }
 }
 
+//starts countdown  using setINterval method
 function startCountdown() {
     time = 30;
     intervalId = setInterval(decrement, 1000);
 }
 
+//resets necessary variables
 function fullReset() {
     numQuestions = 0;
     gameOver = false;
@@ -123,44 +88,39 @@ function fullReset() {
     $("#lowerRows").show();
 }
 
+//calls helper functions to start game, calling a full reset if necessary
 function startGame() {
     if (numQuestions === 5) {
         fullReset();
     }
     updatePage();
     $("#upperRow").hide();
-    // $("#answers").show();
     answerCanBeClicked = true;
-    // $("#questionWrapper").removeClass("animated lightSpeedIn");
-
 }
 
+//iteratively switches pages
 function switchPage() {
     if (numQuestions === 5) {
-        console.log("Got to final page");
         displayFinalPage();
     }
     else {
         pages.shift();
-        // console.log("Index" + (currentPage.answers.indexOf(currentAnswer) + 1));
         $("#" + (currentPage.answers.indexOf(currentAnswer) + 1)).removeClass("active");
-        // $("#1").removeClass("active");
         updatePage();
         answerCanBeClicked = true;
     }
 }
 
+//helper function that updates new Page visually
 function updatePage() {
     currentPage = pages[0];
-    console.log("Page 0:" + currentPage);
-    console.log("Page 0 Question: " + currentPage.question);
     setPageInfo();
     startCountdown();
     $("#visual").empty();
     $("#visual").append("<img src = '" + currentPage.image + "' style='border:5px solid black'>");
-    // $("#lowerRow").show();
 }
 
+//a bit overly lengthy, it's because I wanted the animations to take place iteratively for every page switch
 function setPageInfo() {
     $("#questionWrapper").removeClass("animated lightSpeedIn");
     $("#question").hide();
@@ -177,12 +137,8 @@ function setPageInfo() {
         $("#answersWrapper").addClass("animated lightSpeedIn");
 
     }, 1000)
-    // $("#questionWrapper").hide();
-    // $("#questionWrapper").show();
-    //figure out how to make the animation continuous
 
     $("#question").text(currentPage.question);
-    // $("#question").text("Testing");
 
     for (var i = 1; i < 5; i++) {
         $("#" + i).text(currentPage.answers[i - 1]);
@@ -193,27 +149,25 @@ function setPageInfo() {
 
 }
 
+//displays result, and uses setTimeout to define how long before a switch
 function displayResult(str) {
 
-    setTimeout(switchPage, 2000);
+    setTimeout(switchPage, 4000);
     if (str === null) {
         str = "Timeout";
     }
     $("#result").text(str);
 }
 
+//checks answer and then carries out necessary action
 function setCheckAnswer() {
     if (answerCanBeClicked) {
-        // console.log("Text" + this.textContent);
         currentAnswer = this.textContent;
-        //  console.log("Index: " + pages.indexOf(currentAnswer));
-        // console.log("Index" + (currentPage.answers.indexOf(currentAnswer) + 1));
         console.log("Current Answer: " + currentAnswer);
         console.log("Current Answers: " + currentPage.answers);
         console.log("Current Index of 4: " + currentPage.answers.indexOf(4));
         console.log("Index: " + (currentPage.answers.indexOf(currentAnswer)));
         $("#" + (currentPage.answers.indexOf(currentAnswer) + 1)).addClass("active");
-        // $("#1").addClass("active");
         if (currentAnswer === currentPage.correctAnswer.toString()) {
             displayResult("Correct");
             numCorrect++;
@@ -231,5 +185,3 @@ $("#start").on("click", startGame);
 $(".input-answer").on("click", setCheckAnswer);
 
 $("#answers").hide();
-
-// startCountdown();
