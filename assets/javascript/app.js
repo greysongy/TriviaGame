@@ -2,70 +2,71 @@
 var time;
 var page1 = {
     question: "Worst-case runtime of finding an element in a non balanced binary search tree",
-    answers: ["O(log(n))", "O(n(log(n))", "O(n)", "O(n^2)"],
+    answers: ["O(log(n))", "O(nlog(n))", "O(n)", "O(n^2)"],
     correctAnswer: "O(n)", 
     image: "assets/images/unbalancedBinarySearchTree.png"
 }
 
 var page2 = {
-    question: "placeholder2",
+    question: "Runtime of the following code",
+    answers: ["O(n^2)", "O(2^n)", "O(n)", "O(n!)"],
+    correctAnswer: ["O(2^n)"], 
+    image: "assets/images/fibCode.png"
+}
+
+var page3 = {
+    question: "Worst-case runtime of QuickSort",
+    answers: ["O(n^2)", "O(n^3)", "O(nlog(n))", "O(n)"],
+    correctAnswer: ["O(n^2)"], 
+    image: "assets/images/QuickSort.png"
+}
+
+var page4 = {
+    question: "Correct Post-Order Traversal of the following tree",
+    answers: ["A C H G B F K J I E", "A B D E H I C F G", "D B H E I A F C G", "D H I E B F G C A"],
+    correctAnswer: ["D H I E B F G C A"], 
+    image: "assets/images/postorderTree.png"
+}
+
+var page5 = {
+    question: "When implementing a priority queue with a heap, what are",
+    answers: ["1", "2", "3", "4"],
+    correctAnswer: ["1"], 
+    image: "assets/images/pq2.png"
+}
+
+var page6 = {
+    question: "placeholder6",
     answers: ["1", "2", "3", "4"],
     correctAnswer: ["1"], 
     image: "none"
 }
 
-var page3 = {
-    question: "placeholder3",
-    answers: [1, 2, 3, 4],
-    correctAnswer: [1]
-}
-
-var page4 = {
-    question: "placeholder4",
-    answers: [1, 2, 3, 4],
-    correctAnswer: [1], 
-    image: "none"
-}
-
-var page5 = {
-    question: "placeholder5",
-    answers: [1, 2, 3, 4],
-    correctAnswer: [1], 
-    image: "none"
-}
-
-var page6 = {
-    question: "placeholder6",
-    answers: [1, 2, 3, 4],
-    correctAnswer: [1], 
-    image: "none"
-}
-
 var page7 = {
     question: "placeholder7",
-    answers: [1, 2, 3, 4],
-    correctAnswer: [1], 
+    answers: ["1", "2", "3", "4"],
+    correctAnswer: ["1"], 
     image: "none"
 }
 
 var page8 = {
     question: "placeholder8",
-    answers: [1, 2, 3, 4],
-    correctAnswer: [1], 
+    answers: ["1", "2", "3", "4"],
+    correctAnswer: ["1"], 
     image: "none"
 }
 
 var page9 = {
     question: "placeholder9",
-    answers: [1, 2, 3, 4],
-    correctAnswer: [1], 
+    answers: ["1", "2", "3", "4"],
+    correctAnswer: ["1"], 
     image: "none"
 }
 
 var page10 = {
     question: "placeholder10",
-    answers: [1, 2, 3, 4],
-    correctAnswer: [1], 
+    answers: ["1", "2", "3", "4"],
+    correctAnswer: ["1"], 
     image: "none"
 }
 
