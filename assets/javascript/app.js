@@ -3,13 +3,15 @@ var time;
 var page1 = {
     question: "Worst-case runtime of finding an element in a non balanced binary search tree",
     answers: ["O(log(n))", "O(n(log(n))", "O(n)", "O(n^2)"],
-    correctAnswer: "O(n)"
+    correctAnswer: "O(n)", 
+    image: "assets/images/unbalancedBinarySearchTree.png"
 }
 
 var page2 = {
     question: "placeholder2",
-    answers: [1, 2, 3, 4],
-    correctAnswer: [1]
+    answers: ["1", "2", "3", "4"],
+    correctAnswer: ["1"], 
+    image: "none"
 }
 
 var page3 = {
@@ -21,43 +23,50 @@ var page3 = {
 var page4 = {
     question: "placeholder4",
     answers: [1, 2, 3, 4],
-    correctAnswer: [1]
+    correctAnswer: [1], 
+    image: "none"
 }
 
 var page5 = {
     question: "placeholder5",
     answers: [1, 2, 3, 4],
-    correctAnswer: [1]
+    correctAnswer: [1], 
+    image: "none"
 }
 
 var page6 = {
     question: "placeholder6",
     answers: [1, 2, 3, 4],
-    correctAnswer: [1]
+    correctAnswer: [1], 
+    image: "none"
 }
 
 var page7 = {
     question: "placeholder7",
     answers: [1, 2, 3, 4],
-    correctAnswer: [1]
+    correctAnswer: [1], 
+    image: "none"
 }
 
 var page8 = {
     question: "placeholder8",
     answers: [1, 2, 3, 4],
-    correctAnswer: [1]
+    correctAnswer: [1], 
+    image: "none"
 }
 
 var page9 = {
     question: "placeholder9",
     answers: [1, 2, 3, 4],
-    correctAnswer: [1]
+    correctAnswer: [1], 
+    image: "none"
 }
 
 var page10 = {
     question: "placeholder10",
     answers: [1, 2, 3, 4],
-    correctAnswer: [1]
+    correctAnswer: [1], 
+    image: "none"
 }
 
 var pages = [page1, page2, page3, page4, page5, page6, page7, page8, page9, page10];
@@ -110,6 +119,9 @@ function switchPage() {
     }
     else {
         pages.shift();
+        // console.log("Index" + (currentPage.answers.indexOf(currentAnswer) + 1));
+        $("#" + (currentPage.answers.indexOf(currentAnswer) + 1)).removeClass("active");
+        // $("#1").removeClass("active");
         updatePage();
         answerCanBeClicked = true;
     }
@@ -119,6 +131,8 @@ function updatePage() {
     currentPage = pages[0];
     setPageInfo();
     startCountdown();
+    $("#visual").empty();
+    $("#visual").append("<img src = '" + currentPage.image + "' style='border:5px solid black'>");
 }
 
 function setPageInfo() {
@@ -146,7 +160,7 @@ function setPageInfo() {
     for (var i = 1; i < 5; i++) {
         $("#" + i).text(currentPage.answers[i - 1]);
     }
-    $("#result").text("Result");
+    $("#result").text("");
     currentAnswer = currentPage.correctAnswer;
     numQuestions++;
 
@@ -163,8 +177,16 @@ function displayResult(str) {
 
 function setCheckAnswer() {
     if (answerCanBeClicked) {
-        console.log("Text" + this.textContent);
+        // console.log("Text" + this.textContent);
         currentAnswer = this.textContent;
+        //  console.log("Index: " + pages.indexOf(currentAnswer));
+        // console.log("Index" + (currentPage.answers.indexOf(currentAnswer) + 1));
+        console.log("Current Answer: " + currentAnswer);
+        console.log("Current Answers: " + currentPage.answers);
+        console.log("Current Index of 4: " + currentPage.answers.indexOf(4));
+        console.log("Index: " + (currentPage.answers.indexOf(currentAnswer)));
+        $("#" + (currentPage.answers.indexOf(currentAnswer) + 1)).addClass("active");
+        // $("#1").addClass("active");
         if (currentAnswer === currentPage.correctAnswer.toString()) {
             displayResult("Correct");
         }
