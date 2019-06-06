@@ -18,7 +18,7 @@ var page3 = {
     question: "Worst-case runtime of QuickSort",
     answers: ["O(n^2)", "O(n^3)", "O(nlog(n))", "O(n)"],
     correctAnswer: ["O(n^2)"],
-    image: "assets/images/QuickSort.png"
+    image: "assets/images/Quicksort2.png"
 }
 
 var page4 = {
